@@ -112,10 +112,9 @@
         <script type="text/javascript">
             function updateIframe() {
                 $("iframe").contents().find("html").html("<html><head><style type='text/css'>" + $("#cssButtonSpace").val() + "</style></head><body>" + $("#htmlButtonSpace").val() + "</body></html>");
-
+                // TODO: Need to find a better and safer way to do this without .eval()
                 document.getElementById("outputButtonSpace").contentWindow.eval($("#jsButtonSpace").val());
-
-                
+ 
             }
 
             // Add the Class highlightButton when hovering over the buttons
