@@ -64,7 +64,7 @@
             .textSpace {
                 float: left;
                 width: 50%;
-                border: 1px solid #ccc;
+                border-right: 1px solid #ccc;
             }
             #htmlSpace {
                 background: rgb(235, 233, 159);
@@ -79,7 +79,7 @@
              
             }
             #outputSpace {
-                border: 1px solid #ccc;
+                
             }
         </style>
 
@@ -124,7 +124,7 @@
                 $(this).toggleClass("active");
                 $(this).removeClass("highlightButton");
             });
-            
+
             // Adjust textarea and iframe to window height
             $(".textSpace").height($(window).height() - $("header").height() - 30);
 
@@ -144,8 +144,11 @@
             $("#outputButton").click(function() {
                 $("#outputSpace").toggle();
             });
+            // Allows textarea to display in iframe
+            $("textarea").on('change keyup paste', function() {
+                $("iframe").contents().find("html").html($("#htmlSpace").val());
+            });      
 
-            
 
         </script>
         
