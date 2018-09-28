@@ -66,20 +66,23 @@
                 width: 50%;
                 border-right: 1px solid #ccc;
             }
-            #htmlSpace {
+            #htmlButtonSpace {
                 background: rgb(235, 233, 159);
                
             }
-            #cssSpace {
+            #cssButtonSpace {
                 background: rgb(138, 167, 221);
                
             }
-            #jsSpace {
+            #jsButtonSpace {
                 background: rgb(197, 148, 148);
              
             }
-            #outputSpace {
+            #outputButtonSpace {
                 
+            }
+            .hidden {
+                display: none;
             }
         </style>
 
@@ -94,16 +97,10 @@
         </div>
     </header>
     <div id="editorSpace">
-        <textarea id="htmlSpace" class="textSpace" name="htmlSpace">
-                HTML Space
-        </textarea>
-        <textarea id="cssSpace" class="textSpace" name="cssSpace">
-                CSS Space
-        </textarea>
-        <textarea id="jsSpace" class="textSpace" name="jsSpace">
-                JavaScript Space
-        </textarea>
-        <iframe id="outputSpace" class="textSpace"></iframe>
+        <textarea id="htmlButtonSpace" class="textSpace" name="htmlSpace">Hello World!</textarea>
+        <textarea id="cssButtonSpace" class="textSpace hidden" name="cssSpace">p { color: blue; }</textarea>
+        <textarea id="jsButtonSpace" class="textSpace hidden" name="jsSpace">alert("Hi, It's Coffee time!");</textarea>
+        <iframe id="outputButtonSpace" class="textSpace"></iframe>
         
     </div>  
 
@@ -123,6 +120,9 @@
             $(".toggleButton").click(function() {
                 $(this).toggleClass("active");
                 $(this).removeClass("highlightButton");
+
+                var spaceId = $(this).attr("id") + "Space";
+                $("#" + spaceId).toggle();
             });
 
             // Adjust textarea and iframe to window height
@@ -131,22 +131,25 @@
             // Fix textarea and iframe width to fit window
             $(".textSpace").width(($(window).width() / 2) - 6);
           
+
             // Toggle the Space to type and recieve the output    
-            $("#htmlButton").click(function() {
-                $("#htmlSpace").toggle();
-            });
-            $("#cssButton").click(function() {
-                $("#cssSpace").toggle();
-            });
-            $("#jsButton").click(function() {
-                $("#jsSpace").toggle();
-            });
-            $("#outputButton").click(function() {
-                $("#outputSpace").toggle();
-            });
+            // $("#htmlButton").click(function() {
+            //     $("#htmlSpace").toggle();
+            // });
+            // $("#cssButton").click(function() {
+            //     $("#cssSpace").toggle();
+            // });
+            // $("#jsButton").click(function() {
+            //     $("#jsSpace").toggle();
+            // });
+            // $("#outputButton").click(function() {
+            //     $("#outputSpace").toggle();
+            // });
+
+
             // Allows textarea to display in iframe
             $("textarea").on('change keyup paste', function() {
-                $("iframe").contents().find("html").html($("#htmlSpace").val());
+                $("iframe").contents().find("html").html($("#htmlButtonSpace").val());
             });      
 
 
