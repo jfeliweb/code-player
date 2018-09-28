@@ -15,7 +15,7 @@
                 font-family: Arial, Helvetica, sans-serif;
                 margin: 0;
                 padding: 0;
-                background-color: #f3f3f3;
+                background-color: rgb(222, 222, 222);
             }
             header {
                 padding: 10px;
@@ -64,7 +64,7 @@
             .textSpace {
                 float: left;
                 width: 50%;
-                border-right: 1px solid #ccc;
+                /* border-right: 1px solid #ccc; */
             }
             #htmlButtonSpace {
                 background: rgb(235, 233, 159);
@@ -79,7 +79,8 @@
              
             }
             #outputButtonSpace {
-                
+                background-color: #fff;
+                border: none;
             }
             .hidden {
                 display: none;
@@ -120,9 +121,14 @@
             $(".toggleButton").click(function() {
                 $(this).toggleClass("active");
                 $(this).removeClass("highlightButton");
-
+                
+                // Control the display of the spaces and iframe
                 var spaceId = $(this).attr("id") + "Space";
-                $("#" + spaceId).toggle();
+                $("#" + spaceId).toggleClass("hidden");
+
+                // Divide the spaces based on hidden elements
+                var numberOfActiveSpaces = 4 - $(".hidden").length;
+                $(".textSpace").width(($(window).width() / numberOfActiveSpaces) - 6);
             });
 
             // Adjust textarea and iframe to window height
@@ -130,21 +136,6 @@
 
             // Fix textarea and iframe width to fit window
             $(".textSpace").width(($(window).width() / 2) - 6);
-          
-
-            // Toggle the Space to type and recieve the output    
-            // $("#htmlButton").click(function() {
-            //     $("#htmlSpace").toggle();
-            // });
-            // $("#cssButton").click(function() {
-            //     $("#cssSpace").toggle();
-            // });
-            // $("#jsButton").click(function() {
-            //     $("#jsSpace").toggle();
-            // });
-            // $("#outputButton").click(function() {
-            //     $("#outputSpace").toggle();
-            // });
 
 
             // Allows textarea to display in iframe
