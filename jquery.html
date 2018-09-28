@@ -24,7 +24,6 @@
             }
             #logo {
                 float: left;
-                font-weight: bold;
                 margin: 0;
                 padding-top: 5px;
             }
@@ -47,6 +46,12 @@
                 border-top-right-radius: 5px;
                 border-bottom-right-radius: 5px;
                 border-right: 1px solid #757575;
+            }
+            .active {
+                background-color: #e8f2ff;
+            }
+            .highlightButton {
+                background-color: gray;
             }
             #editorSpace {
                 width: 100%;
@@ -89,10 +94,10 @@
    <header>
         <h1 id="logo">CodePlayer</h1>
         <div id="toggleButtonsContainer">
-            <div class="toggleButton" id="htmlButton">HTML</div>
+            <div class="toggleButton active" id="htmlButton">HTML</div>
             <div class="toggleButton" id="cssButton">CSS</div>
             <div class="toggleButton" id="jsButton">JavaScript</div>
-            <div class="toggleButton" id="outputButton">Output</div>
+            <div class="toggleButton active" id="outputButton">Output</div>
         </div>
     </header>
     <div id="editorSpace">
@@ -113,6 +118,20 @@
         
         
         <script type="text/javascript">
+            // Add the Class highlightButton when hovering over the buttons
+            $(".toggleButton").hover(function() {
+                $(this).addClass("highlightButton");
+            }, function() {
+                $(this).removeClass("highlightButton");
+            });
+
+            // Toggle the Button with the class active when click and remove highlightButton class
+            $(".toggleButton").click(function() {
+                $(this).toggleClass("active");
+                $(this).removeClass("highlightButton");
+            });
+          
+            // Toggle the Space to type and recieve the output    
             $("#htmlButton").click(function() {
                 $("#htmlSpace").toggle();
             });
