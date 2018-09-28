@@ -11,34 +11,54 @@
         <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
         
         <style type="text/css">
+            body {
+                margin: 0;
+            }
+            header {
+                padding: 5px;
+                background-color: rgb(222, 222, 222);
+            }
             #toggleButtons {
-                width: 250px;
-                margin: 0 auto;
+                position: absolute;
+                top: 30px;
+                left: 40%;
+                border-radius: 5px;
+            }
+            button {
+                padding: 15px;
+                font-size: 16px;
+            }
+            #editorSpace {
+                width: 100%;
+                height: 800px;
+                margin: 0px;
+                padding: 0px;
+                background-color: red;
             }
             #htmlSpace {
                 width: 24%;
-                height: auto;
+                height: 1000px;
                 background: rgb(235, 233, 159);
                 border: 1px solid #ccc;
                 float: left;
             }
             #cssSpace {
                 width: 24%;
-                height: auto;
+                height: 1000px;
                 background: rgb(138, 167, 221);
                 border: 1px solid #ccc;
                float: left;
             }
             #jsSpace {
                 width: 24%;
-                height: auto;
+                height: 1000px;
                 background: rgb(197, 148, 148);
                 border: 1px solid #ccc;
                 float: left;
             }
             #outputSpace {
                 width: 24%;
-                height: auto;
+                height: 1000px;
                 background: rgb(250, 250, 250);
                 border: 1px solid #ccc;
                 float: left;
@@ -54,12 +74,19 @@
             <button id="jsButton">JavaScript</button>
             <button id="outputButton">Output</button>
         </div>
-    </header> 
-   <div id="htmlSpace">HTML Space</div>
-   <div id="cssSpace">CSS Space</div>
-   <div id="jsSpace">JS Space</div>
-   <div id="outputSpace">Output Space</div>
-   
+    </header>
+    <div id="editorSpace">
+        <textarea id="htmlSpace" name="htmlSpace">
+                HTML Space
+        </textarea>
+        <textarea id="cssSpace" name="cssSpace">
+                CSS Space
+        </textarea>
+        <textarea id="jsSpace" name="jsSpace">
+                JavaScript Space
+        </textarea>
+        <div id="outputSpace">Output Space</div>
+    </div>  
 
 
     <body>
@@ -76,7 +103,7 @@
                 $("#jsSpace").toggle();
             });
             $("#outputButton").click(function() {
-                $("#outSpace").toggle();
+                $("#outputSpace").toggle();
             });
         </script>
         
