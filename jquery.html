@@ -11,17 +11,73 @@
         <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
         
         <style type="text/css">
-    
+            #toggleButtons {
+                width: 250px;
+                margin: 0 auto;
+            }
+            #htmlSpace {
+                width: 24%;
+                height: auto;
+                background: rgb(235, 233, 159);
+                border: 1px solid #ccc;
+                float: left;
+            }
+            #cssSpace {
+                width: 24%;
+                height: auto;
+                background: rgb(138, 167, 221);
+                border: 1px solid #ccc;
+               float: left;
+            }
+            #jsSpace {
+                width: 24%;
+                height: auto;
+                background: rgb(197, 148, 148);
+                border: 1px solid #ccc;
+                float: left;
+            }
+            #outputSpace {
+                width: 24%;
+                height: auto;
+                background: rgb(250, 250, 250);
+                border: 1px solid #ccc;
+                float: left;
+            }
         </style>
 
     </head>
+   <header>
+        <h1>CodePlayer</h1>
+        <div id="toggleButtons">
+            <button id="htmlButton">HTML</button>
+            <button id="cssButton">CSS</button>
+            <button id="jsButton">JavaScript</button>
+            <button id="outputButton">Output</button>
+        </div>
+    </header> 
+   <div id="htmlSpace">HTML Space</div>
+   <div id="cssSpace">CSS Space</div>
+   <div id="jsSpace">JS Space</div>
+   <div id="outputSpace">Output Space</div>
    
+
 
     <body>
         
         
         <script type="text/javascript">
-       
+            $("#htmlButton").click(function() {
+                $("#htmlSpace").toggle();
+            });
+            $("#cssButton").click(function() {
+                $("#cssSpace").toggle();
+            });
+            $("#jsButton").click(function() {
+                $("#jsSpace").toggle();
+            });
+            $("#outputButton").click(function() {
+                $("#outSpace").toggle();
+            });
         </script>
         
     </body>
