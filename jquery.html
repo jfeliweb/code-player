@@ -98,9 +98,9 @@
         </div>
     </header>
     <div id="editorSpace">
-        <textarea id="htmlButtonSpace" class="textSpace" name="htmlSpace">Hello World!</textarea>
+        <textarea id="htmlButtonSpace" class="textSpace" name="htmlSpace"><p id="paragraph">Hello World!</p></textarea>
         <textarea id="cssButtonSpace" class="textSpace hidden" name="cssSpace">p { color: blue; }</textarea>
-        <textarea id="jsButtonSpace" class="textSpace hidden" name="jsSpace">alert("Hi, It's Coffee time!");</textarea>
+        <textarea id="jsButtonSpace" class="textSpace hidden" name="jsSpace">document.getElementById("paragraph").innerHTML = "Hello Bob!";</textarea>
         <iframe id="outputButtonSpace" class="textSpace"></iframe>
         
     </div>  
@@ -110,6 +110,14 @@
         
         
         <script type="text/javascript">
+            function updateIframe() {
+                $("iframe").contents().find("html").html("<html><head><style type='text/css'>" + $("#cssButtonSpace").val() + "</style></head><body>" + $("#htmlButtonSpace").val() + "</body></html>");
+
+                document.getElementById("outputButtonSpace").contentWindow.eval($("#jsButtonSpace").val());
+
+                
+            }
+
             // Add the Class highlightButton when hovering over the buttons
             $(".toggleButton").hover(function() {
                 $(this).addClass("highlightButton");
@@ -136,11 +144,12 @@
 
             // Fix textarea and iframe width to fit window
             $(".textSpace").width(($(window).width() / 2) - 6);
-
+            
+            updateIframe();
 
             // Allows textarea to display in iframe
             $("textarea").on('change keyup paste', function() {
-                $("iframe").contents().find("html").html($("#htmlButtonSpace").val());
+               updateIframe();
             });      
 
 
