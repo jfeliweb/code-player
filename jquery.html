@@ -15,6 +15,7 @@
                 font-family: Arial, Helvetica, sans-serif;
                 margin: 0;
                 padding: 0;
+                background-color: #f3f3f3;
             }
             header {
                 padding: 10px;
@@ -54,39 +55,31 @@
                 background-color: gray;
             }
             #editorSpace {
-                width: 100%;
-                height: 800px;
                 margin: 0px;
                 padding: 0px;
-                background-color: red;
+            }
+            textarea {
+                resize: none;
+            }
+            .textSpace {
+                float: left;
+                width: 50%;
+                border: 1px solid #ccc;
             }
             #htmlSpace {
-                width: 24%;
-                height: 1000px;
                 background: rgb(235, 233, 159);
-                border: 1px solid #ccc;
-                float: left;
+               
             }
             #cssSpace {
-                width: 24%;
-                height: 1000px;
                 background: rgb(138, 167, 221);
-                border: 1px solid #ccc;
-               float: left;
+               
             }
             #jsSpace {
-                width: 24%;
-                height: 1000px;
                 background: rgb(197, 148, 148);
-                border: 1px solid #ccc;
-                float: left;
+             
             }
             #outputSpace {
-                width: 24%;
-                height: 1000px;
-                background: rgb(250, 250, 250);
                 border: 1px solid #ccc;
-                float: left;
             }
         </style>
 
@@ -101,16 +94,17 @@
         </div>
     </header>
     <div id="editorSpace">
-        <textarea id="htmlSpace" name="htmlSpace">
+        <textarea id="htmlSpace" class="textSpace" name="htmlSpace">
                 HTML Space
         </textarea>
-        <textarea id="cssSpace" name="cssSpace">
+        <textarea id="cssSpace" class="textSpace" name="cssSpace">
                 CSS Space
         </textarea>
-        <textarea id="jsSpace" name="jsSpace">
+        <textarea id="jsSpace" class="textSpace" name="jsSpace">
                 JavaScript Space
         </textarea>
-        <div id="outputSpace">Output Space</div>
+        <iframe id="outputSpace" class="textSpace"></iframe>
+        
     </div>  
 
 
@@ -130,6 +124,12 @@
                 $(this).toggleClass("active");
                 $(this).removeClass("highlightButton");
             });
+            
+            // Adjust textarea and iframe to window height
+            $(".textSpace").height($(window).height() - $("header").height() - 30);
+
+            // Fix textarea and iframe width to fit window
+            $(".textSpace").width(($(window).width() / 2) - 6);
           
             // Toggle the Space to type and recieve the output    
             $("#htmlButton").click(function() {
