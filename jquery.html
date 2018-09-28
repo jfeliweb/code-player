@@ -12,21 +12,41 @@
         
         <style type="text/css">
             body {
+                font-family: Arial, Helvetica, sans-serif;
                 margin: 0;
+                padding: 0;
             }
             header {
-                padding: 5px;
+                padding: 10px;
                 background-color: rgb(222, 222, 222);
+                margin: 0 0 0px 0;
+                height: 50px;
             }
-            #toggleButtons {
-                position: absolute;
-                top: 30px;
-                left: 40%;
-                border-radius: 5px;
+            #logo {
+                float: left;
+                font-weight: bold;
+                margin: 0;
+                padding-top: 5px;
             }
-            button {
+            #toggleButtonsContainer {
+                width: 330px;
+                margin: 0 auto;
+            }
+            .toggleButton {
                 padding: 15px;
                 font-size: 16px;
+                float: left;
+                border: 1px solid #757575;
+                border-right: none;
+            }
+            #htmlButton {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+            #outputButton {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                border-right: 1px solid #757575;
             }
             #editorSpace {
                 width: 100%;
@@ -67,12 +87,12 @@
 
     </head>
    <header>
-        <h1>CodePlayer</h1>
-        <div id="toggleButtons">
-            <button id="htmlButton">HTML</button>
-            <button id="cssButton">CSS</button>
-            <button id="jsButton">JavaScript</button>
-            <button id="outputButton">Output</button>
+        <h1 id="logo">CodePlayer</h1>
+        <div id="toggleButtonsContainer">
+            <div class="toggleButton" id="htmlButton">HTML</div>
+            <div class="toggleButton" id="cssButton">CSS</div>
+            <div class="toggleButton" id="jsButton">JavaScript</div>
+            <div class="toggleButton" id="outputButton">Output</div>
         </div>
     </header>
     <div id="editorSpace">
@@ -105,6 +125,9 @@
             $("#outputButton").click(function() {
                 $("#outputSpace").toggle();
             });
+
+            
+
         </script>
         
     </body>
